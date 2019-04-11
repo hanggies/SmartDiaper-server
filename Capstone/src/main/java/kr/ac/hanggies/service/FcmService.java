@@ -7,12 +7,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+@Service
 public class FcmService {
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/sendFCM", method = RequestMethod.GET)
+	@RequestMapping(value="/sendFCM")
 	public void sendPush(String msg/*, MobileTokenVO vo*/)
 			throws Exception {
 
@@ -39,7 +40,7 @@ public class FcmService {
         JSONObject notification = new JSONObject();
         
         //FirebaseMessaging.getInstance().subscribeToTopic("all");
-        notification.put("body", "test");
+        notification.put("body", msg);
         notification.put("title", "Smart Diaper");
         root.put("notification", notification);
         root.put("to", "/topics/all");
