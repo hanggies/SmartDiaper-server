@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.hanggies.service.FcmService;
+import kr.ac.hanggies.service.SensingService;
 
 @Controller
 public class SignalController {
+	
+	@Autowired
+	private SensingService sensingservice;
 	
 	@Autowired
 	private FcmService fcm;
@@ -21,15 +25,19 @@ public class SignalController {
 			produces = { "application/json" })
 	public @ResponseBody String sensingSignal(@RequestBody Map<String, Object> info) {
 	
-		System.out.println("sid: " + info.get("sid"));
-		System.out.println("signal: " + info.get("signal"));
+		String sid = (String) info.get("sid");
+		String signal = (String) info.get("signal");
+		System.out.println("sid: " + sid);
+		System.out.println("signal: " + signal);
+		
+		//sensingservice
+		if( !sensingservice.updateSensingState(sid, signal) )
+			System.out.println("Updating sensing state cannot be done");
 		try {
 			fcm.sendPush("기저귀를 교체해야합니다.");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		return "home";
 	}
