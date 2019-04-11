@@ -24,7 +24,7 @@ public class PatientDao {
 
 	public List<State> getRooms() {
 
-		String sqlStatement = "select room, needChange from smartdiaper.patient"; // record -> object
+		String sqlStatement = "select room, needChange from hanggies.patient"; // record -> object
 
 		return jdbcTemplate.query(sqlStatement, new RowMapper<State>() {
 
