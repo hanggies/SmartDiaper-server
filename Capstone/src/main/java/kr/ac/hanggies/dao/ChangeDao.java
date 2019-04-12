@@ -7,8 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SensingDao {
-
+public class ChangeDao {
+	
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
@@ -16,12 +16,13 @@ public class SensingDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-
-	public boolean updateSensingState(String sid) {
+	
+	public boolean updateChangeState(String sid) {
 	
 		String sqlStatement = "update patient set needChange=? " + "where sid=?" ;
 	
 		return (jdbcTemplate.update(sqlStatement,
-					new Object[] { true, sid }) == 1 );
+					new Object[] { false, sid }) == 1 );
 	}
+
 }
