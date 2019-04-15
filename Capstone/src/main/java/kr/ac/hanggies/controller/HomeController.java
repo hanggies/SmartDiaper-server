@@ -1,5 +1,6 @@
 package kr.ac.hanggies.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -31,7 +32,18 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		List<State> rooms = patientService.getRooms();
-
+		
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i).getNeedChange() == 0) {
+				for (int j = i; j < rooms.size(); j++) {
+					if (rooms.get(i).getRoomNumber().equals(rooms.get(j).getRoomNumber())
+							&& rooms.get(j).getNeedChange() == 1) {
+						rooms.remove(i);
+						continue;
+					}
+				}
+			}
+		}
 		model.addAttribute("rooms", rooms);
 
 		return "home";

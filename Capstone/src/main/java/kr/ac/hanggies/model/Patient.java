@@ -11,5 +11,5 @@ public class Patient {
 	private String sid;
 	private String name;
 	private String room;
-	private boolean needChange;
+	private int needChange;
 }

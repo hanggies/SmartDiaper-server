@@ -15,8 +15,12 @@ public class PatientService {
 	@Autowired
 	private PatientDao patientDao;
 	
-	public List<Patient> getPatients(){
-		return patientDao.getPatients();
+	public List<Patient> getAllPatients(){
+		return patientDao.getAllPatients();
+	}
+	
+	public List<Patient> getRoomPatients(String room){
+		return patientDao.getRoomPatients(room);
 	}
 
 	public boolean addPatient(Patient patient) {
@@ -25,17 +29,17 @@ public class PatientService {
 		
 	}
 
-	public boolean deletePatient(int id) {
-		return patientDao.deletePatient(id);
+	public boolean deletePatient(String sid) {
+		return patientDao.deletePatient(sid);
 	}
 
 	public boolean updatePatient(Patient patient) {
 		return patientDao.updatePatient(patient);
 	}
 
-	public Patient getPatientById(int id) {
+	public Patient getPatientById(String sid) {
 		// TODO Auto-generated method stub
-		return patientDao.getPatientById(id);
+		return patientDao.getPatientById(sid);
 	}
 	
 	public List<State> getRooms(){

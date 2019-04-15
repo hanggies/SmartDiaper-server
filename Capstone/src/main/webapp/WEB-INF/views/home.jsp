@@ -25,11 +25,12 @@
 								<rect width="100%" height="100%" fill="#ff0000" />
 								</svg>
 							</c:when>
-					</c:choose>
+						</c:choose>
 
 					<h2>${roomNumber.roomNumber }호</h2>
 					<p>
-						<a class="btn btn-secondary" href="#" role="button" fill="#777">상세보기 &raquo;</a>
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/roomPatients/${roomNumber.roomNumber }" 
+						role="button" fill="#777">상세보기 &raquo;</a>
 					</p>
 				</div>
 			</c:forEach>

@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <header>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="<c:url value="/"/>">Hanggies</a>
+			<a class="navbar-brand" href="<c:url value="/"/>">SmartDiaper</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarCollapse" aria-controls="navbarCollapse"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -14,8 +14,8 @@
 					<li class="nav-item active"><a class="nav-link" href="<c:url value="/"/>">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/products"/>">Patients</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/admin"/>">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/allPatients"/>">Patients</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/admin"/>">History</a></li>
 					</li>
 				</ul>
 				<form class="form-inline mt-2 mt-md-0">

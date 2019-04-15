@@ -6,46 +6,42 @@
 <tiles-definitions>
 	<definition name="base"
 		template="/WEB-INF/templates/layout.jsp">
-		<put-attribute name="title" value="eStore hompage" />
+		<put-attribute name="title" value="smartDiaper hompage" />
 		<put-attribute name="menu"
 			value="/WEB-INF/templates/menu.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/templates/footer.jsp" />
 	</definition>
-	
+
 	<definition name="home" extends="base">
-		<put-attribute name="title" value="My eStore hompage" />
+		<put-attribute name="title" value="SmartDiaper homepage" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/home.jsp" />
 	</definition>
-	
-	<definition name="products" extends="base">
-		<put-attribute name="title" value="Products page" />
+
+	<definition name="patients" extends="base">
+		<put-attribute name="title" value="Patients page" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/products.jsp" />
+			value="/WEB-INF/views/patients.jsp" />
 	</definition>
-	
+
+	<definition name="updatePatient" extends="base">
+		<put-attribute name="title" value="Update Patient page" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/updatePatient.jsp" />
+	</definition>
+
 	<definition name="admin" extends="base">
 		<put-attribute name="title" value="Administrator page" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin.jsp" />
 	</definition>
-	
-	<definition name="productInventory" extends="base">
-		<put-attribute name="title" value="Product Inventory page" />
+
+
+	<definition name="addPatient" extends="base">
+		<put-attribute name="title" value="add Patient page" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/productInventory.jsp" />
+			value="/WEB-INF/views/addPatient.jsp" />
 	</definition>
-	
-	<definition name="addProduct" extends="base">
-		<put-attribute name="title" value="add Product page" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/addProduct.jsp" />
-	</definition>
-	
-	<definition name="updateProduct" extends="base">
-		<put-attribute name="title" value="Update Product page" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/updateProduct.jsp" />
-	</definition>
+
 </tiles-definitions>
