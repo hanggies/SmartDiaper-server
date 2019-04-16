@@ -33,14 +33,16 @@
 							<c:when test="${patient.needChange eq '0' }">
 								<br>
 								<br>
-								<c:if test="${not empty roomNumber}">
-									<h3 class="title">${patient.name }</h3>
-									<c:if test="${empty roomNumber}"> <br>
-										<p>병실 : ${patient.room}호</p> 
+									<c:if test="${not empty roomNumber}">
+										<div class="box blue">
+										<h3 class="title">${patient.name }</h3>
+										<c:if test="${empty roomNumber}"> <br>
+											<p>병실 : ${patient.room}호</p> 
+										</c:if>
+										<p>기저귀 : 정상</p>
+										<p></p>
+										</div>
 									</c:if>
-									<p>기저귀 : 정상</p>
-									<p></p>
-								</c:if>
 								<c:if test="${empty roomNumber}">
 									<a
 										href="${pageContext.request.contextPath}/updatePatient/${patient.sid }"
@@ -58,18 +60,21 @@
 							<c:when test="${patient.needChange eq '1' }">
 								<br>
 								<br>
-								<c:if test="${not empty roomNumber}">
-									<h3 class="title">${patient.name }</h3>
-									<c:if test="${empty roomNumber}">
-										<p>병실 : ${patient.room}호</p>
+								
+									<c:if test="${not empty roomNumber}">
+										<div class="box red">
+											<h3 class="title">${patient.name }</h3>
+											<c:if test="${empty roomNumber}">
+												<p>병실 : ${patient.room}호</p>
+											</c:if>
+											<p>기저귀 : 교체요망</p>
+											<p>
+												시간 :
+												<!-- 측정된 시간 넣어야 한다-->
+												${currentTime}
+											</p>
+										</div>	
 									</c:if>
-									<p>기저귀 : 교체요망</p>
-									<p>
-										시간 :
-										<!-- 측정된 시간 넣어야 한다-->
-										${currentTime}
-									</p>
-								</c:if>
 								<c:if test="${empty roomNumber}">
 									<a
 										href="${pageContext.request.contextPath}/updatePatient/${patient.sid }"
