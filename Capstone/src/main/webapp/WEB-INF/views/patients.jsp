@@ -3,12 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <META HTTP-EQUIV="refresh" CONTENT="5">
-
+<!-- 
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600'
-	rel='stylesheet' type='text/css' />
+	rel='stylesheet' type='text/css' /> -->
+
+<link href="<c:url value="/resources/css/patients.css"/>" rel="stylesheet">
+	
 
 <div class="container-wrapper">
+
 	<div class="container marketing">
 		<c:if test="${not empty roomNumber}">
 			<h2>${roomNumber}호</h2>
@@ -40,7 +44,7 @@
 								<c:if test="${empty roomNumber}">
 									<a
 										href="${pageContext.request.contextPath}/updatePatient/${patient.sid }"
-										class="tile.blue">
+										class="box blue">
 										<h3 class="title">${patient.name }</h3> <c:if
 											test="${empty roomNumber}">
 											<p>병실 : ${patient.room}호</p>
@@ -69,7 +73,7 @@
 								<c:if test="${empty roomNumber}">
 									<a
 										href="${pageContext.request.contextPath}/updatePatient/${patient.sid }"
-										class="tile.red">
+										class="box red">
 										<h3 class="title">${patient.name }</h3> <c:if
 											test="${empty roomNumber}">
 											<p>병실 : ${patient.room}호</p>
