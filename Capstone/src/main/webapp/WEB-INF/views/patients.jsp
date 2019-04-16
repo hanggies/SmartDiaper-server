@@ -28,15 +28,15 @@
 		<div class="row">
 			<c:forEach var="patient" items="${patients }">
 				<div class="col-sm-4">
-					<div class=".tile">
+					<div class=".box">
 						<c:choose>
 							<c:when test="${patient.needChange eq '0' }">
 								<br>
 								<br>
 								<c:if test="${not empty roomNumber}">
 									<h3 class="title">${patient.name }</h3>
-									<c:if test="${empty roomNumber}">
-										<p>병실 : ${patient.room}호</p>
+									<c:if test="${empty roomNumber}"> <br>
+										<p>병실 : ${patient.room}호</p> 
 									</c:if>
 									<p>기저귀 : 정상</p>
 									<p></p>
@@ -46,7 +46,7 @@
 										href="${pageContext.request.contextPath}/updatePatient/${patient.sid }"
 										class="box blue">
 										<h3 class="title">${patient.name }</h3> <c:if
-											test="${empty roomNumber}">
+											test="${empty roomNumber}"> <br>
 											<p>병실 : ${patient.room}호</p>
 										</c:if>
 										<p>기저귀 : 정상</p>
