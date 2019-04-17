@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.hanggies.service.ChangeService;
 import kr.ac.hanggies.service.FcmService;
+import kr.ac.hanggies.service.HistoryService;
 import kr.ac.hanggies.service.SensingService;
 
 @Controller
@@ -20,6 +21,8 @@ public class SignalController {
 	private SensingService sensingService;
 	@Autowired
 	private ChangeService changeService;
+	@Autowired
+	private HistoryService historyService;
 	@Autowired
 	private FcmService fcm;
 	
@@ -35,9 +38,12 @@ public class SignalController {
 		//sensingservice
 		if( !sensingService.updateSensingState(sid) )
 			System.out.println("Updating sensing state cannot be done");
+		//historyservice
+		if( !historyService.addHistory(sid, signal) )
+			System.out.println("Add history cannot be done");
 		
 		try {
-			fcm.sendPush("기저귀를 교체해야합니다.");
+			//fcm.sendPush("기저귀를 교체해야합니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,6 +63,9 @@ public class SignalController {
 		//sensingservice
 		if( !changeService.updateChangeState(sid) )
 			System.out.println("Updating change state cannot be done");
+		//historyservice
+		if( !historyService.addHistory(sid, signal) )
+			System.out.println("Add history cannot be done");
 		
 		return "home";
 	}
