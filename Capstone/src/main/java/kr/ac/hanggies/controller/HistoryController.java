@@ -25,9 +25,11 @@ public class HistoryController {
 	}
 
 	@RequestMapping("/history/{sid}")
-	public String getHistoryById(@PathVariable("histoty") String room, Model model) {
-		List<History> history = historyService.getHistoryById(room);
+	public String getHistoryById(@PathVariable("sid") String sid, Model model) {
+		List<History> history = historyService.getHistoryById(sid);
+		model.addAttribute("patientName", history.get(0).getName());
 		model.addAttribute("allHistory", history);
-		return "patients";
+		
+		return "patientHistory";
 	}
 }

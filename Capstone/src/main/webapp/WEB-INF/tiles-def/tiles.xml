@@ -43,11 +43,17 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/addPatient.jsp" />
 	</definition>
-	
-		<definition name="allHistory" extends="base">
+
+	<definition name="allHistory" extends="base">
 		<put-attribute name="title" value="all History page" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/allHistory.jsp" />
+	</definition>
+
+	<definition name="patientHistory" extends="base">
+		<put-attribute name="title" value="each History page" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/patientHistory.jsp" />
 	</definition>
 
 </tiles-definitions>

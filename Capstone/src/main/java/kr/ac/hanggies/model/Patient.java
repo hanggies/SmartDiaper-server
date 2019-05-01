@@ -12,4 +12,5 @@ public class Patient {
 	private String name;
 	private String room;
 	private int needChange;
+	private String time;
 }

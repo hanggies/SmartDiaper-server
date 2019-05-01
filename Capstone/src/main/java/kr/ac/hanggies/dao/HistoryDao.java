@@ -45,9 +45,10 @@ public class HistoryDao {
 	}
 	
 	public List<History> getHistoryById(String sid) {
-		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal " + 
-				"from history h, patient p " + 
-				"where h.sid = p.sid = ?"; // record -> object
+		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal\r\n" + 
+				"from history h, patient p\r\n" + 
+				"where h.sid = p.sid and h.sid\r\n" +
+				"ORDER BY h.id ASC"; // record -> object
 			
 		return jdbcTemplate.query(sqlStatement, new Object[] { sid }, new RowMapper<History>() {
 
@@ -61,7 +62,6 @@ public class HistoryDao {
 				history.setTime(rs.getString("time"));
 				history.setSignal(rs.getString("signal"));
 
-				System.out.println(history);
 				return history;
 			}
 
@@ -72,7 +72,8 @@ public class HistoryDao {
 
 		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal\r\n" + 
 				"from history h, patient p\r\n" + 
-				"where h.sid = p.sid"; // record -> object
+				"where h.sid = p.sid\r\n" +
+				"ORDER BY h.id ASC"; // record -> object
 
 		return jdbcTemplate.query(sqlStatement, new RowMapper<History>() {
 
