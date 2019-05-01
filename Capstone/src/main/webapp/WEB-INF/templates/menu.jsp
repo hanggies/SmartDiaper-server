@@ -15,7 +15,7 @@
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/allPatients"/>">Patients</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/admin"/>">History</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/allHistory"/>">History</a></li>
 					</li>
 				</ul>
 				<form class="form-inline mt-2 mt-md-0">

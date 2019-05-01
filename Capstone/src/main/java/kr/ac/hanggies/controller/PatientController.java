@@ -22,6 +22,7 @@ public class PatientController {
 	
 	@Autowired
 	private PatientService patientService;
+	
 	@RequestMapping("/allPatients")
 	public String getAllPatients(Model model) {
 		List<Patient> patients = patientService.getAllPatients();
