@@ -14,7 +14,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.hanggies.model.History;
-import kr.ac.hanggies.model.Patient;
 
 @Repository
 public class HistoryDao {
@@ -38,6 +37,8 @@ public class HistoryDao {
 			sig = "감지";
 		else if (sig.equals("change"))
 			sig = "교체";
+		else if (sig.equals("등록"))
+			sig = "등록";
 
 		String sqlStatement = "INSERT INTO `smartdiaper`.`history` (`sid`, `time`, `signal`) " + "VALUES (?, ?, ?)";
 
@@ -45,10 +46,10 @@ public class HistoryDao {
 	}
 	
 	public List<History> getHistoryById(String sid) {
-		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal\r\n" + 
-				"from history h, patient p\r\n" + 
-				"where h.sid = p.sid and h.sid\r\n" +
-				"ORDER BY h.id ASC"; // record -> object
+		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal \r\n" + 
+				"from history h, patient p \r\n" + 
+				"where h.sid = p.sid and h.sid = ? \r\n" +
+				"order by h.id desc"; // record -> object
 			
 		return jdbcTemplate.query(sqlStatement, new Object[] { sid }, new RowMapper<History>() {
 
@@ -73,7 +74,7 @@ public class HistoryDao {
 		String sqlStatement = "select h.id, h.sid, p.name, p.room, h.time, h.signal\r\n" + 
 				"from history h, patient p\r\n" + 
 				"where h.sid = p.sid\r\n" +
-				"ORDER BY h.id ASC"; // record -> object
+				"order by h.id desc"; // record -> object
 
 		return jdbcTemplate.query(sqlStatement, new RowMapper<History>() {
 

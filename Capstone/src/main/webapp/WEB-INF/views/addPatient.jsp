@@ -11,8 +11,6 @@
 		<sf:form action="${pageContext.request.contextPath}/addPatient" method="post"
 			modelAttribute="patient">
 
-			<sf:hidden path="sid" />
-
 			<div class="form-group">
 				<label for="sid">환자 번호</label>
 				<sf:input path="sid" id="sid" class="form-control" />

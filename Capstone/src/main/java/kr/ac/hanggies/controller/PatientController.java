@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.hanggies.model.Patient;
+import kr.ac.hanggies.service.HistoryService;
 import kr.ac.hanggies.service.PatientService;
 
 @Controller
@@ -22,37 +23,22 @@ public class PatientController {
 	
 	@Autowired
 	private PatientService patientService;
+	@Autowired
+	private HistoryService historyService;
 	
 	@RequestMapping("/allPatients")
 	public String getAllPatients(Model model) {
 		List<Patient> patients = patientService.getAllPatients();
-		Date time = new Date();
-		String currentTime=String.format("%s년 %s월 %s일 %s시 %s분 %s초", 
-				time.getYear()+1900, time.getMonth()+1,time.getDay()+14,time.getHours(),time.getMinutes(),time.getSeconds());
-		model.addAttribute("currentTime", currentTime);
 		model.addAttribute("patients", patients);
 		
 		return "patients";
 	}
-	
-	/*@RequestMapping("/viewProduct/{productId}")
-	public String viewProduct(@PathVariable int productId, Model model) {
-		
-		Product product = productService.getProductById(productId);
-		model.addAttribute(product);
-		
-	 return "viewProduct";
-	 }*/
 	
 	@RequestMapping("/roomPatients/{room}")
 	public String getRoomPatients(@PathVariable("room") String room, Model model) {
 		List<Patient> patients = patientService.getRoomPatients(room);
 		model.addAttribute("patients", patients);
 		model.addAttribute("roomNumber", patients.get(0).getRoom());
-		Date time = new Date();
-		String currentTime=String.format("%s년 %s월 %s일 %s시 %s분 %s초", 
-				time.getYear()+1900, time.getMonth()+1,time.getDay()+14,time.getHours(),time.getMinutes(),time.getSeconds());
-		model.addAttribute("currentTime", currentTime);
 		return "patients";
 	}
 	
@@ -96,7 +82,6 @@ public class PatientController {
 	
 	@RequestMapping(value = "/addPatient", method = RequestMethod.POST)
 	public String addPatientPost(@Valid Patient patient, BindingResult result) {
-
 		if (result.hasErrors()) {
 			System.out.println("Form data has some errors");
 			List<ObjectError> errors = result.getAllErrors();
@@ -105,8 +90,9 @@ public class PatientController {
 
 			return "addPatient";
 		}
-
-		if (!patientService.addPatient(patient))
+		String sid = patient.getSid();
+		String signal = "등록";
+		if (!(patientService.addPatient(patient)&&historyService.addHistory(sid, signal)))
 			System.out.println("Adding patient cannot be done");
 
 		return "redirect:/allPatients";

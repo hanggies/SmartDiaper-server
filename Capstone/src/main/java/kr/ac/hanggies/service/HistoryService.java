@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.hanggies.dao.HistoryDao;
 import kr.ac.hanggies.model.History;
-import kr.ac.hanggies.model.Patient;
 
 @Service
 public class HistoryService {

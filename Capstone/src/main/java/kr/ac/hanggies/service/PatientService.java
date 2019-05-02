@@ -24,7 +24,6 @@ public class PatientService {
 	}
 
 	public boolean addPatient(Patient patient) {
-		
 		return patientDao.addPatient(patient);
 		
 	}
@@ -38,7 +37,6 @@ public class PatientService {
 	}
 
 	public Patient getPatientById(String sid) {
-		// TODO Auto-generated method stub
 		return patientDao.getPatientById(sid);
 	}
 	

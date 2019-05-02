@@ -41,33 +41,15 @@ public class PatientDao {
 		});
 	}
 
-	/*
-	 * public List<Patient> getPatients() {
-	 * 
-	 * String sqlStatement = "select * from patient"; // record -> object
-	 * 
-	 * return jdbcTemplate.query(sqlStatement, new RowMapper<Patient>() {
-	 * 
-	 * @Override public Patient mapRow(ResultSet rs, int rowNum) throws SQLException
-	 * {
-	 * 
-	 * Patient patient = new Patient();
-	 * 
-	 * patient.setId(rs.getInt("id")); patient.setName(rs.getString("name"));
-	 * patient.setCategory(rs.getString("category"));
-	 * patient.setPrice(rs.getInt("price"));
-	 * patient.setManufacturer(rs.getString("manufacturer"));
-	 * patient.setUnitInStock(rs.getInt("unitInStock"));
-	 * patient.setDescription(rs.getString("description"));
-	 * 
-	 * return patient; }
-	 * 
-	 * }); }
-	 */
 
 	public List<Patient> getRoomPatients(String room) {
 
-		String sqlStatement = "select * from patient where room = ?"; // record -> object
+		String sqlStatement = "select p.sid, p.name, p.room, p.needChange, h.time\r\n" + 
+				"from history h, patient p\r\n" + 
+				"where h.sid = p.sid and p.room = ? and h.time = (select max(h2.time)\r\n" + 
+				"from history h2\r\n" + 
+				"where h2.sid = h.sid)\r\n" + 
+				"order by room asc"; // record -> object
 
 		return jdbcTemplate.query(sqlStatement, new Object[] { room }, new RowMapper<Patient>() {
 
@@ -86,7 +68,12 @@ public class PatientDao {
 
 	public List<Patient> getAllPatients() {
 
-		String sqlStatement = "select * from patient"; // record -> object
+		String sqlStatement = "select p.sid, p.name, p.room, p.needChange, h.time\r\n" + 
+				"from history h, patient p\r\n" + 
+				"where h.sid = p.sid and h.time = (select max(h2.time)\r\n" + 
+				"from history h2\r\n" + 
+				"where h2.sid = h.sid)\r\n" +
+				"order by room asc"; // record -> object
 
 		return jdbcTemplate.query(sqlStatement, new RowMapper<Patient>() {
 
@@ -97,6 +84,7 @@ public class PatientDao {
 				patient.setName(rs.getString("name"));
 				patient.setRoom(rs.getString("room"));
 				patient.setNeedChange(rs.getInt("needChange"));
+				patient.setTime(rs.getString("time"));
 
 				return patient;
 			}
@@ -140,7 +128,7 @@ public class PatientDao {
 	}
 
 	public boolean addPatient(Patient patient) {
-
+		
 		String sid = patient.getSid();
 		String name = patient.getName();
 		String room = patient.getRoom();
@@ -150,62 +138,5 @@ public class PatientDao {
 
 		return (jdbcTemplate.update(sqlStatement, new Object[] { sid, name, room, needChange }) == 1);
 	}
-
-	/*
-	 * public boolean addPatient(Patient patient) {
-	 * 
-	 * String name = patient.getName(); String category = patient.getCategory(); int
-	 * price = patient.getPrice(); String manufacturer = patient.getManufacturer();
-	 * int unitInStock = patient.getUnitInStock(); String description =
-	 * patient.getDescription();
-	 * 
-	 * String sqlStatement = "insert into estore.patient (name, category, price" +
-	 * ", manufacturer, unitInStock, description) values (?, ?, ?, ?, ?, ?)";
-	 * 
-	 * return (jdbcTemplate.update(sqlStatement, new Object[] { name, category,
-	 * price, manufacturer, unitInStock, description }) == 1); }
-	 * 
-	 * public boolean deletePatient(int id) {
-	 * 
-	 * String sqlStatement = "delete from patient where id = ?";
-	 * 
-	 * return (jdbcTemplate.update(sqlStatement, new Object[] { id }) == 1); }
-	 * 
-	 * public Patient getPatientById(int id) { String sqlStatement =
-	 * "select * from patient where id = ?"; // record -> object
-	 * 
-	 * return jdbcTemplate.queryForObject(sqlStatement, new Object[] { id }, new
-	 * RowMapper<Patient>() {
-	 * 
-	 * @Override public Patient mapRow(ResultSet rs, int rowNum) throws SQLException
-	 * {
-	 * 
-	 * Patient patient = new Patient();
-	 * 
-	 * patient.setId(rs.getInt("id")); patient.setName(rs.getString("name"));
-	 * patient.setCategory(rs.getString("category"));
-	 * patient.setPrice(rs.getInt("price"));
-	 * patient.setManufacturer(rs.getString("manufacturer"));
-	 * patient.setUnitInStock(rs.getInt("unitInStock"));
-	 * patient.setDescription(rs.getString("description"));
-	 * 
-	 * return patient; }
-	 * 
-	 * }); }
-	 * 
-	 * public boolean updatePatient(Patient patient) { int id = patient.getId();
-	 * String name = patient.getName(); String category = patient.getCategory(); int
-	 * price = patient.getPrice(); String manufacturer = patient.getManufacturer();
-	 * int unitInStock = patient.getUnitInStock(); String description =
-	 * patient.getDescription();
-	 * 
-	 * String sqlStatement = "update patient set name=?, category=?, price=?" +
-	 * ", manufacturer=?, unitInStock=?, description=? where id=?";
-	 * 
-	 * return (jdbcTemplate.update(sqlStatement, new Object[] { name, category,
-	 * price, manufacturer, unitInStock, description, id}) == 1);
-	 * 
-	 * }
-	 */
 
 }

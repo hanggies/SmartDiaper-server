@@ -71,7 +71,7 @@
 											<p>
 												시간 :
 												<!-- 측정된 시간 넣어야 한다-->
-												${currentTime}
+												${patient.time}
 											</p>
 										</div>	
 									</c:if>
@@ -87,7 +87,7 @@
 										<p>
 											시간 :
 											<!-- 측정된 시간 넣어야 한다-->
-											${currentTime}
+											${patient.time}
 										</p>
 									</a>
 								</c:if>
