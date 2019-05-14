@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.hanggies.dao.PatientDao;
 import kr.ac.hanggies.service.ChangeService;
 import kr.ac.hanggies.service.FcmService;
 import kr.ac.hanggies.service.HistoryService;
@@ -25,6 +26,8 @@ public class SignalController {
 	private HistoryService historyService;
 	@Autowired
 	private FcmService fcm;
+	@Autowired
+	private PatientDao patientDao;
 	
 	@RequestMapping(value = "/sensing", headers="Accept=*/*", method = RequestMethod.POST, 
 			produces = { "application/json" })
@@ -43,7 +46,7 @@ public class SignalController {
 			System.out.println("Add history cannot be done");
 		
 		try {
-			//fcm.sendPush("기저귀를 교체해야합니다.");
+			fcm.sendPush(patientDao.getPatientById(sid).getRoom() + "호실 " + patientDao.getPatientById(sid).getName() + "님 기저귀를 교체해야합니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
