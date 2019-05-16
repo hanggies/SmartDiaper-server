@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.ac.hanggies.dao.PatientDao;
 import kr.ac.hanggies.model.Patient;
 import kr.ac.hanggies.service.FcmService;
+import kr.ac.hanggies.service.HistoryService;
 
 @Controller
 
@@ -37,21 +38,3 @@ public class CycleController {
         return "home";
     }
 }
-
-/*List<BookDTO> items = bookService.bookList();
-JSONArray jArray = new JSONArray(); // json배열
-for(int i=0; i<items.size(); i++){
-    BookDTO dto = items.get(i);
-    JSONObject row = new JSONObject();
-    // json객체.put("변수명",값)
-    row.put("book_code", dto.getBook_code());
-    row.put("book_name", dto.getBook_name());
-    row.put("press", dto.getPress());
-    row.put("price", dto.getPrice());
-    row.put("amount", dto.getAmount());
-    // 배열에 추가
-    // json배열.add(인덱스,json객체)
-    jArray.add(i,row);
-}
-// json객체에 배열을 넣음
-jsonMain.put("sendData", jArray);*/
