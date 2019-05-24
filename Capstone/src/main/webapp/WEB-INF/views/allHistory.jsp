@@ -29,7 +29,7 @@
 					<div class="table100-firstcol">
 						<table>
 							<thead>
-								<tr class="row100 head">
+								<tr class="row100 head" bgcolor="#e5e7e9">
 									<th class="cell100 column1">사건번호</th>
 								</tr>
 							</thead>
@@ -48,7 +48,7 @@
 						<div class="table100-nextcols">
 							<table>
 								<thead>
-									<tr class="row30 head">
+									<tr class="row30 head" bgcolor="#e5e7e9">
 										<th class="cell100 column2">ID</th>
 										<th class="cell100 column3">이름</th>
 										<th class="cell100 column4">호실</th>
