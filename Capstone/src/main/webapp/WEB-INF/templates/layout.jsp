@@ -16,16 +16,12 @@
 
 <!-- Bootstrap core CSS -->
 
-<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="<c:url value="/resources/css/bootstrap.min.css"/>"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" crossorigin="anonymous">
+<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" crossorigin="anonymous">
 
 <!--<link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 <!-- Custom styles for this template -->
-<link href="<c:url value="/resources/css/carousel.css"/>"
-	rel="stylesheet">
+<link href="<c:url value="/resources/css/carousel.css"/>" rel="stylesheet">
 
 
 <link rel="stylesheet"
@@ -40,7 +36,7 @@
 	</div>
 
 	<script src="<c:url value="/resources/css/bootstrap.min.css"/>"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		integrity="sha256-O+tIQpqELVwzC5tMwKUYZS4eyhYSH0C9wdTEHk/xoIw="
 		crossorigin="anonymous"></script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -51,7 +47,7 @@
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
 	<script src="<c:url value="/resources/js/bootstrap.bundle.min.js"/>"
-		integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+		integrity="sha256-XZfkOGd6FuhF88h5GgEmRIpXbm+hBkFo74yYDPY5rbw="
 		crossorigin="anonymous"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 

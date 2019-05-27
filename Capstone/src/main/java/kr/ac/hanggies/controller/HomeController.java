@@ -47,6 +47,13 @@ public class HomeController {
 			}
 		}
 		Collections.sort(rooms);
+		
+		State firstRoom = null;
+		for(int i = 0; i < rooms.size()-1; i++) {
+			firstRoom = rooms.get(i);
+			if(firstRoom.getRoomNumber().equals(rooms.get(i+1).getRoomNumber()))
+					rooms.remove(i+1);
+		}
 		model.addAttribute("rooms", rooms);
 
 		return "home";
