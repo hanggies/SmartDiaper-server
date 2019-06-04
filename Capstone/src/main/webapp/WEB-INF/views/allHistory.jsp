@@ -48,24 +48,22 @@
 						<div class="table100-nextcols">
 							<table>
 								<thead>
-									<tr class="row30 head" bgcolor="#e5e7e9">
-										<th class="cell100 column2">ID</th>
-										<th class="cell100 column3">이름</th>
-										<th class="cell100 column4">호실</th>
-										<th class="cell100 column5">발생시간</th>
-										<th class="cell100 column6">사건 종류</th>
-										<th class="cell100 column7">상세보기</th>
+									<tr class="head" bgcolor="#e5e7e9">
+										<th class="cell100 column2">이름</th>
+										<th class="cell100 column3">호실</th>
+										<th class="cell100 column4">발생시간</th>
+										<th class="cell100 column5">사건 종류</th>
+										<th class="cell100 column6">상세보기</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="history" items="${allHistory}">
-										<tr class="row30 body">
-											<td class="cell100 column2">${ history.sid }</td>
-											<td class="cell100 column3">${ history.name}</td>
-											<td class="cell100 column4">${ history.room}</td>
-											<td class="cell100 column5">${ history.time}</td>
-											<td class="cell100 column6">${ history.signal}</td>
-											<td class="cell100 column7"><a
+										<tr class="body">
+											<td class="cell100 column2">${ history.name}</td>
+											<td class="cell100 column3">${ history.room}</td>
+											<td class="cell100 column4" >${ history.time}</td>
+											<td class="cell100 column5">${ history.signal}</td>
+											<td class="cell100 column6"><a
 												href="<c:url value="/history/${history.sid}" />"> <i
 													class="fa fa-info-circle"></i>
 											</a></td>

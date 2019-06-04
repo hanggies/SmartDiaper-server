@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,7 @@ public class FcmService {
 		System.out.println("\nSending 'POST' request to URL : " + url);
 		System.out.println("Post parameters : " + input);
 		System.out.println("Response Code : " + responseCode);
+		System.out.println("Time : " + new Date());
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		String inputLine;

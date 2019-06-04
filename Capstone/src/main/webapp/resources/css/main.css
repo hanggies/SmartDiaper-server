@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .container-wrapper{
-	margin-top: 50px;
+	margin-top: 150px;
 }
 
 
@@ -198,24 +198,24 @@ th, td {
 }
 
 .column2 {
-  width: 225px;
-  padding-left: 55px;
+  width: 100px;
+  padding-left: 15px;
 }
 
 .column3 {
-  width: 205px;
+  width: 100px;
 }
 
 .column4 {
-  width: 195px;
+  width: 300px;
 }
 
 .column5 {
-  width: 235px;
+  width: 100px;
 }
 
 .column6 {
-  width: 170px;
+  width: 100px;
 }
 
 .column7 {
