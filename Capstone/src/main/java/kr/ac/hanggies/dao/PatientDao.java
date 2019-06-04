@@ -60,6 +60,7 @@ public class PatientDao {
 				patient.setName(rs.getString("name"));
 				patient.setRoom(rs.getString("room"));
 				patient.setNeedChange(rs.getInt("needChange"));
+				patient.setTime(rs.getString("time"));
 
 				return patient;
 			}
