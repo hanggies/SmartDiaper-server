@@ -30,13 +30,13 @@
 						<table>
 							<thead>
 								<tr class="row100 head" bgcolor="#e5e7e9">
-									<th class="cell100 column1">이름</th>
+									<th class="cell100 column1">사건 번호</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="history" items="${allHistory}">
 									<tr class="row100 body">
-										<td class="cell30 column1">${history.name}</td>
+										<td class="cell30 column1">${history.id}</td>
 									</tr>
 								</c:forEach>
 
@@ -48,18 +48,18 @@
 						<div class="table100-nextcols">
 							<table>
 								<thead>
-									<tr class="row30 head" bgcolor="#e5e7e9">
-										<th class="cell100 column2">호실</th>
-										<th class="cell100 column3">발생시간</th>
-										<th class="cell100 column4">사건 종류</th>
+									<tr class="head" bgcolor="#e5e7e9">
+										<th class="column2">호실</th>
+										<th class="column4">발생시간</th>
+										<th class="column5">사건 종류</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="history" items="${allHistory}">
-										<tr class="row30 body">
-											<td class="cell30 column2">${history.room}</td>									
-											<td class="cell100 column3">${ history.time}</td>
-											<td class="cell100 column4">${ history.signal}</td>
+										<tr class="body">
+											<td class="column2">${history.room}</td>									
+											<td class="column4">${ history.time}</td>
+											<td class="column5">${ history.signal}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
