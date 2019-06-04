@@ -21,7 +21,7 @@
   /* there must be 'bottom' or 'top' for ps__rail-x */
   bottom: 0px;
   /* please don't change 'position' */
-  position: absolute;
+  position: fixed;
 }
 
 .ps__rail-y {
